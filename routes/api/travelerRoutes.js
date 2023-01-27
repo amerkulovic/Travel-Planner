@@ -43,4 +43,10 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.delete("/:id", async (req, res) => {
+  const travelerData = await Traveler.destroy({ where: { id: req.params.id } });
+
+  res.status(200).json(travelerData);
+});
+
 module.exports = router;
