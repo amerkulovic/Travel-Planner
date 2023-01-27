@@ -31,4 +31,16 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+router.post("/", async (req, res) => {
+  try {
+    const travelerData = await Traveler.create({
+      name: req.body.name,
+      email: req.body.email,
+    });
+    res.status(200).json(travelerData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 module.exports = router;
